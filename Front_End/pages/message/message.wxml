@@ -1,0 +1,18 @@
+ 
+ <template name = "temp" id = "{{id}}">
+ <block>
+    <image src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1548995837&di=68ffc9b7bf20e8303ce666af8af27b08&src=http://pic30.photophoto.cn/20140120/0017031037146089_b.jpg" />
+    <view >昵称</view>
+    <text >asfl;asdfl
+    </text>
+    <button bindtap='clik'>
+     点赞
+    </button>
+    <view >
+      0
+    </view>
+    <view>阅读数:<view >0</view></view>
+      
+    <input  /> <button >评论</button>
+    </block>
+    </template>
