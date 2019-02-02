@@ -1,0 +1,5 @@
+<view class="navbar">
+      <navigator class="navitem">求助</navigator>
+      <navigator class="navitem">外卖/快递</navigator>
+      <navigator class="navitem">企业</navigator>
+</view>

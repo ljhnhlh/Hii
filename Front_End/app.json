@@ -1,13 +1,41 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/message/message"
+  "pages": [
+    "pages/discover/discover",
+    "pages/heart/heart",
+    "pages/Me/Me",
+    "pages/Message/Message"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#bbb",
+    "navigationBarTitleText": "H i i",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/discover/discover",
+      "text": "求助",
+      "iconPath": "icons/icon.png",
+      "selectedIconPath": "icons/icon.png"
+    },
+    {
+      "pagePath": "pages/heart/heart",
+      "text": "交心",
+      "iconPath": "icons/icon.png",
+      "selectedIconPath": "icons/icon.png"
+    },
+    {
+      "pagePath": "pages/Message/Message",
+      "text": "消息",
+      "iconPath": "icons/icon.png",
+      "selectedIconPath": "icons/icon.png"
+    },
+    {
+      "pagePath": "pages/Me/Me",
+      "text": "我的",
+      "iconPath": "icons/icon.png",
+      "selectedIconPath": "icons/icon.png"
+    }
+    ]
   }
 }

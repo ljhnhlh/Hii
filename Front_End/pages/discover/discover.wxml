@@ -1,0 +1,8 @@
+<view class="global">
+<view class="tarbar">
+<view class="tab  active" bindtab="select_nav">求助</view>
+<view class="tab active">快递/外卖</view>
+<view class="tab active">企业</view>
+</view>
+
+</view>

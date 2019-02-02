@@ -1,7 +1,0 @@
-<!--index.wxml-->
-<import src =  '../message/message.wxml'/>
-<view class="container">
-    <view >
-    <template is='temp' ></template>
-    </view>
-</view>
