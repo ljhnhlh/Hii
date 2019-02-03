@@ -3,8 +3,11 @@
 <view wx:for="{{tabname}}" wx:key = "{{index}}" data-index = "{{index}}"  class="tab {{currentIndex===index?'active':''}}" bindtap='select_nav'>{{item.message}}</view>
 </view>
 <view class="qiuzhu"  hidden="{{currentIndex===0?false:true}}">求助
-<template is=""></template>
+<!-- <template is=""></template> -->
 </view>
 <view class="kdwm" id='1' hidden="{{currentIndex===1?false:true}}">快递</view>
 <view class="qiye" id='2' hidden="{{currentIndex===2?false:true}}">企业</view>
+<view wx:for="{{jt}}" wx:key="{{index}}">
+    <view >{{item.a}}</view>
+</view>
 </view>

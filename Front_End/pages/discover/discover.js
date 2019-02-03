@@ -1,4 +1,7 @@
 // pages/discover/discover.js
+
+var temp = [{ 'a': 1 }, { 'a': 1 }, { 'a': 1 }, { 'a': 1 }];
+var tt = 0;
 Page({
 
     /**
@@ -7,7 +10,8 @@ Page({
 
     data: {
         currentIndex: 0,
-        tabname: [{ 'message': '求助' }, { 'message': '快递/外卖' }, { 'message': '企业' }]
+        tabname: [{ 'message': '求助' }, { 'message': '快递/外卖' }, { 'message': '企业' }],
+        jt: temp
     },
 
     /**
@@ -17,11 +21,14 @@ Page({
 
     },
     select_nav(e) {
-        console.log(123);
-
+        console.log(temp);
+        temp.push({ 'a': tt++ });
         this.setData({
-            currentIndex: e.target.dataset.index
+            currentIndex: e.target.dataset.index,
+            jt: temp
         })
+        console.log(jt);
+
 
     },
     /**
@@ -72,4 +79,4 @@ Page({
     onShareAppMessage: function() {
 
     }
-})
+});

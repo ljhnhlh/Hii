@@ -1,14 +1,26 @@
 <template name="msg">
     <block  >
-        <image  />
+    <!-- 头像 -->
+        <image  scr="{{item.imgsrc}}"/>
         <view >昵称</view>
+        <!-- 申请按钮 -->
         <button >帮助</button>
-        <text >求助内容</text>
+        <text >{{item.content}}</text>
         <text >报答：{{item.payoff}}</text>
         <!-- 点赞 -->
         <image  />
+        <view class="praiseNum">{{item.praiseNum}}</view>
         <!-- 评论 -->
         <image  />
+        <!-- 评论方式切换(弹幕式或评论阅读式)，可以做成b站那种提醒式选择 -->
+        <block class="commentArea">
+        <view class="comment" wx:for="{{item.comment}}">
+        <!-- isMe 类使昵称变绿 -->
+        <view class="nicheng {{item.user1 === id ? 'isMe':''}}" ></view>
+        <view class="nicheng {{item.user2 === id ? 'isMe':''}}" wx:if="{{item.user2 !== ''}}"> 回复 {{item.user2}}</view>
+        <view class="commentText">{{item.commentText}}</view>
+        </view>
+        </block>
 
     </block>
 </template>
