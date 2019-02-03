@@ -4,8 +4,10 @@ Page({
     /**
      * 页面的初始数据
      */
+
     data: {
-        currentIndex: 0
+        currentIndex: 0,
+        tabname: [{ 'message': '求助' }, { 'message': '快递/外卖' }, { 'message': '企业' }]
     },
 
     /**
@@ -15,7 +17,12 @@ Page({
 
     },
     select_nav(e) {
-    
+        console.log(123);
+
+        this.setData({
+            currentIndex: e.target.dataset.index
+        })
+
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

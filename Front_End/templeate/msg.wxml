@@ -1,0 +1,14 @@
+<template name="msg">
+    <block  >
+        <image  />
+        <view >昵称</view>
+        <button >帮助</button>
+        <text >求助内容</text>
+        <text >报答：{{item.payoff}}</text>
+        <!-- 点赞 -->
+        <image  />
+        <!-- 评论 -->
+        <image  />
+
+    </block>
+</template>

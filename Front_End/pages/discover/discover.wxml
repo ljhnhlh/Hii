@@ -1,8 +1,10 @@
 <view class="global">
 <view class="tarbar">
-<view class="tab  active" bindtab="select_nav">求助</view>
-<view class="tab active">快递/外卖</view>
-<view class="tab active">企业</view>
+<view wx:for="{{tabname}}" wx:key = "{{index}}" data-index = "{{index}}"  class="tab {{currentIndex===index?'active':''}}" bindtap='select_nav'>{{item.message}}</view>
 </view>
-
+<view class="qiuzhu"  hidden="{{currentIndex===0?false:true}}">求助
+<template is=""></template>
+</view>
+<view class="kdwm" id='1' hidden="{{currentIndex===1?false:true}}">快递</view>
+<view class="qiye" id='2' hidden="{{currentIndex===2?false:true}}">企业</view>
 </view>
