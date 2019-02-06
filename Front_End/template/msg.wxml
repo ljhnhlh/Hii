@@ -3,25 +3,25 @@
     <!-- 头像 -->
         <!-- <image  scr="{{item.imgsrc}}"/> -->
         <image class='user_img icon' src='/icons/temp.png' ></image>
-        <view class="niname">昵称</view>
+        <view class="niname" bind:tap="lookForUserInfo" >昵称</view>
         <!-- 申请按钮 -->
         <image class="apply icon" src="/icons/temp.png">asfsa</image>
         <text class="content">faslfkjlasdkf{{item.content}}</text>
         <view >报答： fs{{item.payoff}}</view>
         <view class="amount">阅读 10，评论 10</view>
-        <!-- 点赞 -->
-        <image  class="icon parise" src="/icons/temp.png"/>
-        <!-- 评论 -->
-        <image class="comment icon" src="/icons/temp.png" />
-        <!-- 评论：弹幕是默认，不显示回复类的，文章评论点击才加载，显示全部 -->
-       <image class="comment_open icon" src="/icons/temp.png" />
+            <!-- 点赞 -->
+            <image  class="icon parise" src="/icons/temp.png"/>
+            <!-- 评论 -->
+            <image class="comment icon" src="/icons/temp.png" />
+            <!-- 评论：弹幕是默认，不显示回复类的，文章评论点击才加载，显示全部 -->
+            <image class="comment_open icon" src="/icons/temp.png" />
         <view class="commentArea">
-        <view class="comment" wx:for="{{item.comment}}" wx:for-item="it">
-        <!-- isMe 类使昵称变绿 -->
-        <view class="nicheng {{it.user1 === id ? 'isMe':''}}" >{{it.user1}}</view>
-        <view class="nicheng {{it.user2 === id ? 'isMe':''}}" wx:if="{{it.user2 !== ''}}"> 回复 {{it.user2}}</view>
-        <view class="commentText">{{it.commentText}}</view>
-        </view>
+            <view class="comment_item" wx:for="{{item.comment}}" wx:for-item="it">
+                <!-- isMe 类使昵称变绿 -->
+                <view class="nicheng {{it.user1 === id ? 'isMe':''}}" >{{it.user1}}</view>
+                <view class="nicheng {{it.user2 === id ? 'isMe':''}}" wx:if="{{it.user2 !== ''}}"> 回复 {{it.user2}}</view>
+                <view class="commentText">{{it.commentText}}</view>
+            </view>
         </view>
 
     </view>

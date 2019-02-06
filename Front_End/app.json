@@ -4,7 +4,8 @@
     "pages/heart/heart",
     "pages/discover/discover",
     "pages/Me/Me",
-    "pages/Message/Message"
+    "pages/Message/Message",
+    "pages/Infomation/infomation"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,30 +14,31 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/discover/discover",
-      "text": "求助",
-      "iconPath": "icons/icon.png",
-      "selectedIconPath": "icons/icon.png"
-    },
-    {
-      "pagePath": "pages/heart/heart",
-      "text": "交心",
-      "iconPath": "icons/icon.png",
-      "selectedIconPath": "icons/icon.png"
-    },
-    {
-      "pagePath": "pages/Message/Message",
-      "text": "消息",
-      "iconPath": "icons/icon.png",
-      "selectedIconPath": "icons/icon.png"
-    },
-    {
-      "pagePath": "pages/Me/Me",
-      "text": "我的",
-      "iconPath": "icons/icon.png",
-      "selectedIconPath": "icons/icon.png"
-    }
+    "list": [
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "求助",
+        "iconPath": "icons/icon.png",
+        "selectedIconPath": "icons/icon.png"
+      },
+      {
+        "pagePath": "pages/heart/heart",
+        "text": "交心",
+        "iconPath": "icons/icon.png",
+        "selectedIconPath": "icons/icon.png"
+      },
+      {
+        "pagePath": "pages/Message/Message",
+        "text": "消息",
+        "iconPath": "icons/icon.png",
+        "selectedIconPath": "icons/icon.png"
+      },
+      {
+        "pagePath": "pages/Me/Me",
+        "text": "我的",
+        "iconPath": "icons/icon.png",
+        "selectedIconPath": "icons/icon.png"
+      }
     ]
   }
 }

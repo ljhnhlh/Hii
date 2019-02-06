@@ -17,16 +17,14 @@
 
 .content {
     position: relative;
+    overflow: scroll;
     border: 1pt solid black;
-    bottom: 50pt;
-    height: auto;
-    overflow: auto;
 }
 
 .parise {
     position: absolute;
     right: 35%;
-    bottom: 10pt;
+    top: 30%;
 }
 
 .apply {
@@ -37,20 +35,19 @@
 
 .comment {
     position: absolute;
-    bottom: 10pt;
+    top: 30%;
     right: 20%;
 }
 
 .commentArea {
+    position: relative;
+    font-size: 10pt;
     border: 1px solid black;
-    position: absolute;
-    height: 30px;
-    bottom: 0;
 }
 
 .comment_open {
     position: absolute;
-    bottom: 10pt;
+    top: 30%;
     right: 5%;
 }
 
