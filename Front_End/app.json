@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/discover/discover",
+    "template/msg",
     "pages/heart/heart",
+    "pages/discover/discover",
     "pages/Me/Me",
     "pages/Message/Message"
   ],

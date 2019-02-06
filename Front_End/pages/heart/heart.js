@@ -5,9 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabname: [{ 'message': '悄悄话' }, { 'message': '告白' }],
+    currentIndex:0
   },
-
+  select_nav(e) {
+   
+    this.setData({
+      currentIndex: e.target.dataset.index,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,0 +1,66 @@
+.msg {
+    position: relative;
+    margin: 8%;
+    font-size: 14pt;
+    border: 1pt solid black;
+}
+
+.icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 8pt;
+}
+
+.amount {
+    font-size: 5pt;
+}
+
+.content {
+    position: relative;
+    border: 1pt solid black;
+    bottom: 50pt;
+    height: auto;
+    overflow: auto;
+}
+
+.parise {
+    position: absolute;
+    right: 35%;
+    bottom: 10pt;
+}
+
+.apply {
+    position: relative;
+    bottom: 65pt;
+    left: 80%;
+}
+
+.comment {
+    position: absolute;
+    bottom: 10pt;
+    right: 20%;
+}
+
+.commentArea {
+    border: 1px solid black;
+    position: absolute;
+    height: 30px;
+    bottom: 0;
+}
+
+.comment_open {
+    position: absolute;
+    bottom: 10pt;
+    right: 5%;
+}
+
+.niname {
+    position: relative;
+    bottom: 30pt;
+    left: 25%;
+}
+
+.user_img {
+    border-radius: 50%;
+    border: 1pt solid black;
+}

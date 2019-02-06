@@ -1,2 +1,9 @@
-<!--pages/heart/heart.wxml-->
-<text>pages/heart/heart.wxml</text>
+<view class="global">
+<view class="tarbar">
+<view wx:for="{{tabname}}" wx:key = "{{index}}" data-index = "{{index}}"  class="tab {{currentIndex===index?'active':''}}" bindtap='select_nav'>{{item.message}}</view>
+</view>
+<view class="qiuzhu"  hidden="{{currentIndex===0?false:true}}">悄悄话
+<!-- <template is=""></template> -->
+</view>
+<view class="kdwm" id='1' hidden="{{currentIndex===1?false:true}}">告白</view>
+</view>

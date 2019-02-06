@@ -150,5 +150,105 @@ select_nav(e) {
 
 
 
+# 如何在page的函数里面使用page中data对象的值
+
+问题起源：在page的data中定义了jt后，要调用的时候总是报错
+
+
+
+```js
+    data: {
+        currentIndex: 0,
+        tabname: [{ 'message': '求助' }, { 'message': '快递/外卖' }, { 'message': '企业' }],
+        jt: temp
+    },
+```
+
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190206111120925.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzAzODYy,size_16,color_FFFFFF,t_70)
+
+显示jt没有定义
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190206111343640.png)
+
+解决：
+
+使用`this.data.jt` 来获得jt的值
+
+为什么data的同级函数不能获得data内的数据？
+
+首先我们来看看page的结构: 
+
+从下面可以看出，page是一个函数，传入的参数是一个对象：`Page({...})`
+
+其内部的运行机制，目前理解，是wxml的bindtap的函数会查找page内的对象，然后运行内部定义的函数，所以与wxml直接相关的函数是写在page内的，而不是写在page外的，这就能解释为什么bindtap调用page外面的函数是undefined
+
+```
+Page({
+    data: {
+        currentIndex: 0,
+        tabname: [{ 'message': '求助' }, { 'message': '快递/外卖' }, { 'message': '企业' }],
+        jt: temp
+    },
+    onLoad: function(options) {
+
+    },
+    select_nav(e) {
+    },
+    onReady: function() {
+
+    },
+
+    onShow: function() {
+
+    },
+    onHide: function() {
+
+    },
+    onUnload: function() {
+
+    },
+    onPullDownRefresh: function() {
+
+    },
+    onReachBottom: function() {
+
+    },
+    onShareAppMessage: function() {
+
+    }
+});
+```
+
+接着将为什么page内的函数无法直接调用data内的数据，知道page是一个函数，其内部的函数是一个对象就很好办了，即对象内的参数不是全局变量，是局部变量，另一个对象当然不能直接调用其它对象的值！为了调用data内的变量，此处使用了`this`全局变量，this.data.xxx即可使用该数据，如果想调用其它同级函数，使用this.xxx即可
+
+如：上面`select_nav` 想调用`onLoad`方法,使用this.onLoad()即可
+
+```js
+    
+ onLoad: function(options) {
+      console.log(123);
+    },
+    
+select_nav(e) {
+        console.log(temp);
+        temp.push({ 'a': tt++ });
+        this.setData({
+            currentIndex: e.target.dataset.index,
+            jt: temp
+        });
+        this.onLoad();
+    },
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2019020611333147.png)
+
+
+
+# 如何实现下拉刷新，使收到的数据更新在原始数据的前面，而不是像wx:for一样更新在后部
+
+微信应该会有这个功能?找找
+
 # end
 

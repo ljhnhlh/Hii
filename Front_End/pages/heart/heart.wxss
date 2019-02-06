@@ -1,1 +1,14 @@
-/* pages/heart/heart.wxss */
+.tarbar {
+    white-space: nowrap;
+    padding: 5rpx 0;
+}
+
+.tab {
+    display: inline-block;
+    font-size: 30rpx;
+    padding: 20rpx;
+}
+
+.active {
+    border-bottom: 5rpx solid #de688b
+}
