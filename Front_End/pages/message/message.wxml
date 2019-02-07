@@ -1,5 +1,6 @@
 
 
+<!-- 使用组合id:id 和 类型组合 -->
 <button  id="{{message.id}}" >
      <view class="mes">jljdsljdsflsjfsdljsdlkkjsdds</view>
 </button>
