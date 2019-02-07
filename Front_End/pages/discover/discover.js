@@ -11,14 +11,133 @@ Page({
     data: {
         currentIndex: 0,
         tabname: [{ 'message': '求助' }, { 'message': '快递/外卖' }, { 'message': '企业' }],
-        jt: temp
-    },
+        jt: temp,
+        ite: [{
+                'content': ',mnxc,mdsfjjfdkdkjjdhf',
+                'payoff': 'a pan',
+                'comment': [{
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    }
+                ]
 
+            },
+            {
+                'content': 'asdfaskjdhsdhdddx,mnxc,mdsfjjfdkdkjjdf',
+                'payoff': 'a pan',
+                'comment': [{
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    }
+                ]
+
+            },
+            {
+                'content': 'asdfaskjdhsdhdddx,mnxc,mdsfjjfdkdkjjdf',
+                'payoff': 'a pan',
+                'comment': [{
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    }
+                ]
+
+            },
+            {
+                'content': 'asdfaskjdhsdhdddx,mnxc,mdsfjjfdkdkjjdf',
+                'payoff': 'a pan',
+                'comment': [{
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    },
+                    {
+                        'user1': 'u1',
+                        'user2': 'u2',
+                        'commentText': 'adfasfsadfds'
+                    }
+                ]
+
+            }
+        ]
+
+    },
+    lookForUserInfo() {
+        wx.navigateTo({
+            url: '/pages/Infomation/infomation',
+            success: function(res) {
+                // success
+            },
+            fail: function() {
+                // fail
+            },
+            complete: function() {
+                // complete
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      console.log(123);
+        console.log(123);
     },
     select_nav(e) {
         console.log(temp);

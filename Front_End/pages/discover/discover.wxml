@@ -1,9 +1,13 @@
+<import src="/template/msg.wxml" ></import>
 <view class="global">
 <view class="tarbar">
 <view wx:for="{{tabname}}" wx:key = "{{index}}" data-index = "{{index}}"  class="tab {{currentIndex===index?'active':''}}" bindtap='select_nav'>{{item.message}}</view>
 </view>
-<view class="qiuzhu"  hidden="{{currentIndex===0?false:true}}">求助
+<view class="qiuzhu"  hidden="{{currentIndex===0?false:true}}">
 <!-- <template is=""></template> -->
+<!-- <view wx:for="{{ite}}" wx:key="{{wxkey}}"> -->
+<template is="msg"  data="{{ite}}" ></template>
+<!-- </view> -->
 </view>
 <view class="kdwm" id='1' hidden="{{currentIndex===1?false:true}}">快递</view>
 <view class="qiye" id='2' hidden="{{currentIndex===2?false:true}}">企业</view>

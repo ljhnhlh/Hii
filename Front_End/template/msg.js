@@ -6,7 +6,7 @@ Page({
      */
     data: {
         ite: [{
-                'content': 'asdfaskjdhsdhdddx,mnxc,mdsfjjfdkdkjjdf',
+                'content': ',mnxc,mdsfjjfdkdkjjdhf',
                 'payoff': 'a pan',
                 'comment': [{
                         'user1': 'u1',
@@ -110,6 +110,20 @@ Page({
 
             }
         ]
+    },
+    lookForUserInfo() {
+        wx.navigateTo({
+            url: '/pages/Infomation/infomation',
+            success: function(res) {
+                // success
+            },
+            fail: function() {
+                // fail
+            },
+            complete: function() {
+                // complete
+            }
+        })
     },
 
     /**

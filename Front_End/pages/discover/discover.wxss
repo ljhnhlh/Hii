@@ -1,3 +1,4 @@
+@import '/template/msg.wxss';
 .tarbar {
     white-space: nowrap;
     padding: 5rpx 0;

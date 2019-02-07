@@ -1,8 +1,13 @@
 .msg {
-    position: relative;
+    flex-direction: row;
+    justify-content: center;
     margin: 8%;
     font-size: 14pt;
     border: 1pt solid black;
+}
+
+.firstLine {
+    flex-direction: row;
 }
 
 .icon {
@@ -16,43 +21,42 @@
 }
 
 .content {
-    position: relative;
-    overflow: scroll;
+    overflow: hidden;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    /* 设置列数 */
+    -webkit-line-clamp: 5;
     border: 1pt solid black;
 }
 
-.parise {
-    position: absolute;
-    right: 35%;
-    top: 30%;
+.imgcollection {
+    justify-content: space-around;
 }
 
 .apply {
-    position: relative;
     bottom: 65pt;
     left: 80%;
 }
 
-.comment {
-    position: absolute;
-    top: 30%;
-    right: 20%;
-}
-
 .commentArea {
-    position: relative;
     font-size: 10pt;
     border: 1px solid black;
 }
 
-.comment_open {
-    position: absolute;
-    top: 30%;
-    right: 5%;
+.commentText {
+    overflow: hidden;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .niname {
-    position: relative;
     bottom: 30pt;
     left: 25%;
 }

@@ -250,5 +250,53 @@ select_nav(e) {
 
 微信应该会有这个功能?找找
 
+
+
+# 小程序模板循环获取不到数据
+
+在template上使用wx:for=“{{ite}}”,data="{{ite}}",其中ite是data中的对象数组，运行后获取不到里面的数据
+
+解决：
+
+方法一：使用view标签包含template，在view标签上使用wx:for，data为循环的item
+
+```html
+<import src="/template/msg.wxml" ></import>
+<view wx:for="{{ite}}" wx:key="{{wxkey}}">
+<template is="msg"  data="{{item}}" ></template>
+</view>
+```
+
+方法二：template传入对象数组， 在template里面使用wx:for来遍历传入的数据，wx:for使用的数据要在data中，如：wx:for="{{ite.xxxx}}"，wx:for="{{ite}}"
+
+```html
+<!-- wxml -->
+<import src="/template/msg.wxml" ></import>
+<template is="msg"  data="{{ite}}" ></template>
+
+<!-- template -->
+<template name="msg">
+    <view wx:for="{{ite}}" wx:key="i" class="msg">
+        <!-- 内容 -->
+    </view>
+</template>
+```
+
+模板拥有自己的作用域，只能使用 data 传入的数据以及模板定义文件中定义的 `<wxs />` 模块。
+
+# 模板只能使用模板定义文件中定义的 `<wxs />` 模块 吗？
+
+微信教程中讲到：模板拥有自己的作用域，只能使用 data 传入的数据以及模板定义文件中定义的 `<wxs />` 模块。
+
+意思是引用模板的页面，在其js定义一个事件处理函数，模板无法调用，但经过测试，是可以调用的
+
+如：
+
+在模板中bindtap=“lookForUserInfo",在引用文件的js中定义该函数也可以实现点击事件
+
+不过比较好的方法是，在模板的<wxs />中定义，因为模板一般要重复使用该函数
+
+
+
 # end
 
