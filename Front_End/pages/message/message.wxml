@@ -1,2 +1,5 @@
-<!--pages/Message/Message.wxml-->
-<text>pages/Message/Message.wxml</text>
+
+
+<button  id="{{message.id}}" >
+     <view class="mes">jljdsljdsflsjfsdljsdlkkjsdds</view>
+</button>

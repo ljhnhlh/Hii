@@ -1,1 +1,17 @@
-/* pages/Me/Me.wxss */
+.img {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 8pt;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.niname {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -5,7 +5,8 @@
     "pages/heart/heart",
     "pages/Me/Me",
     "pages/Message/Message",
-    "pages/Infomation/infomation"
+    "pages/Infomation/infomation",
+    "pages/competence/competence"
   ],
   "window": {
     "backgroundTextStyle": "light",

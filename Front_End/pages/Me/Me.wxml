@@ -1,0 +1,20 @@
+<wiew class="nameAndImg row">
+    <image class="img" src="../../icons/temp.png"></image>
+    <view class="niname" bind:tap="evalution">昵称</view>
+</wiew>
+<wiew class="nengLiBiaoQian row">
+    <image class="img" src="../../icons/temp.png"></image>
+    <view class="niname" bindtap="competence" >能力标签</view>
+</wiew>
+<wiew class="zhiDingBi row">
+    <image class="img" src="../../icons/temp.png"></image>
+    <view class="niname">置顶币</view>
+</wiew>
+<wiew class="geRenPingjia row">
+    <image class="img" src="../../icons/temp.png"></image>
+    <view class="niname" bind:tap="evalution">个人评价</view>
+</wiew>
+<wiew class="sheZhi row">
+    <image class="img" src="../../icons/temp.png"></image>
+    <view class="niname">设置</view>
+</wiew>

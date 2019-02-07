@@ -2,10 +2,12 @@
     <view wx:for="{{ite}}" wx:key="i" class="msg">
     <!-- 头像 -->
         <!-- <image  scr="{{item.imgsrc}}"/> -->
+        <view class="nik">
         <image class='user_img icon' src='/icons/temp.png' ></image>
         <view class="niname" bind:tap="lookForUserInfo" >昵称</view>
          <!-- 申请按钮 -->
         <image class="apply icon" src="/icons/temp.png">asfsa</image>
+        </view>
         <text class="content">faslfkjlasdkf{{item.content}}</text>
         <view >报答： fs{{item.payoff}}</view>
         <view class="amount">阅读 10，评论 10</view>
@@ -21,7 +23,7 @@
             <view class="comment_item" wx:for="{{item.comment}}" wx:for-item="it" wx:key="{{idex}}">
                 <!-- isMe 类使昵称变绿 -->
                 <view class="nicheng {{it.user1 === id ? 'isMe':''}}" >{{it.user1}}</view>
-                <view class="nicheng {{it.user2 === id ? 'isMe':''}}" wx:if="{{it.user2 !== ''}}"> 回复 {{it.user2}}</view>
+                <view class="nicheng {{it.user2 === id ? 'isMe':''}}" wx:if="{{it.user2 !== ''}}"> 回复 {{it.user2}} :</view>
                 <view class="commentText">{{it.commentText}}</view>
             </view>
         </view>

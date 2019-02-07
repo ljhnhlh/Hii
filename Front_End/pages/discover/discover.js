@@ -28,7 +28,7 @@ Page({
                     {
                         'user1': 'u1',
                         'user2': 'u2',
-                        'commentText': 'adfasfsadfds'
+                        'commentText': 'adfasfffffffffffffffffffffffffffffffffffffffffffffffffffffffsadfds'
                     },
                     {
                         'user1': 'u1',
