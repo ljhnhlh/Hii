@@ -11,5 +11,6 @@
 }
 
 .active {
-    border-bottom: 5rpx solid #de688b
+    color: #de688b;
+    border-bottom: 5rpx solid #de688b;
 }

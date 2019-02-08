@@ -1,0 +1,85 @@
+.msg {
+    display: flex;
+    flex-direction: column;
+    margin: 8%;
+    font-size: 14pt;
+    border: 1pt solid black;
+}
+
+.nik {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.plAndLt_pjBar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.niname {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 8pt;
+}
+
+.amount {
+    font-size: 5pt;
+}
+
+.content {
+    overflow: hidden;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    /* 设置列数 */
+    -webkit-line-clamp: 5;
+    border: 1pt solid black;
+}
+
+.active {
+    color: #de688b;
+    border-bottom: 5rpx solid #de688b;
+}
+
+.imgcollection {
+    justify-content: space-around;
+}
+
+.apply {
+    justify-self: flex-end;
+}
+
+.commentArea {
+    font-size: 10pt;
+    border: 1px solid black;
+}
+
+.commentText {
+    overflow: hidden;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.user_img {
+    border-radius: 50%;
+    border: 1pt solid black;
+}
+
+.comment_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}

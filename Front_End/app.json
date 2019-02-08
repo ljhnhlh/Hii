@@ -6,7 +6,8 @@
     "pages/Me/Me",
     "pages/Message/Message",
     "pages/Infomation/infomation",
-    "pages/competence/competence"
+    "pages/competence/competence",
+    "pages/Message_detail/Message_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

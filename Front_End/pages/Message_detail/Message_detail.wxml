@@ -1,10 +1,10 @@
-<template name="msg">
-    <view wx:for="{{ite}}" wx:key="i" class="msg">
+
+    <view class="msg">
     <!-- 头像 -->
         <!-- <image  scr="{{item.imgsrc}}"/> -->
         <view class="nik">
         <image class='user_img icon' src='/icons/temp.png' ></image>
-        <view class="niname" bind:tap="tool.lookForUserInfo" >昵称</view>
+        <view class="niname" bind:tap="lookForUserInfo" >昵称</view>
          <!-- 申请按钮 -->
         <image class="apply icon" src="/icons/temp.png">asfsa</image>
         </view>
@@ -27,6 +27,10 @@
                 <view class="commentText">{{it.commentText}}</view>
             </view>
         </view>
+        <!-- 这里写的是一个切换栏，跟微信电竞的聊天室和主播页面一样 -->
+        <view class="plAndLt_pjBar ">
+        <view class="pl {{pl?'active':''}}" bind:tap="pljiemian">评论</view>
+        <view class="plAndLt_pj {{pl?'':'active'}}"bind:tap="ltjiemian">聊天</view>
+        </view>
+
     </view>
-    
-</template>
