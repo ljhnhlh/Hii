@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/test_danmu/msg",
+    "template/msg",
     "pages/danmu/danmu",
     "pages/discover/discover",
-    "template/msg",
     "pages/heart/heart",
     "pages/Me/Me",
     "pages/Message/Message",
