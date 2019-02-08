@@ -4,3 +4,4 @@
 <button  id="{{message.id}}" bindtap='detail' >
      <view class="mes">jljdsljdsflsjfsdljsdlkkjsdds</view>
 </button>
+

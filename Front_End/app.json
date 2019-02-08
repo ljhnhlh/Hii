@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/danmu/danmu",
     "pages/discover/discover",
     "template/msg",
     "pages/heart/heart",
