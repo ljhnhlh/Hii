@@ -1,4 +1,4 @@
-<template name="msg">
+<!-- <template name="msg"> -->
     <view wx:for="{{ite}}" wx:key="i" class="msg">
     <!-- 头像 -->
         <!-- <image  scr="{{item.imgsrc}}"/> -->
@@ -17,13 +17,13 @@
             <!-- 评论 -->
             <image class="comment icon" src="/icons/temp.png" />
             <!-- 评论：弹幕是默认，不显示回复类的，文章评论点击才加载，显示全部 -->
-            <image class="comment_open icon" src="/icons/temp.png" />
+            <image class="comment_open icon" src="/icons/temp.png" bind:tap="openDanmu"/>
             </view>
-        <view class="commentArea">
-            <view class="comment_item" wx:for="{{item.comment}}" wx:for-item="it" wx:key="{{idex}}" style="animation: first {{it.time}}s linear forwards;top:{{it.top}}%;color:{{it.color}};">
-            
+        <view wx:if="{{open}}" class="commentArea">
+            <view class="comment_item" wx:for="{{showList[item.id]}}" wx:for-item="it" wx:key="{{idex}}" style="animation: first {{it.time}}s linear forwards;top:{{it.top}}%;color:{{it.color}};">
+
             </view>
         </view>
     </view>
     
-</template>
+<!-- </template> -->
