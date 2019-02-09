@@ -51,6 +51,7 @@
 .commentArea {
     font-size: 10pt;
     border: 1px solid black;
+    height: 100pt;
 }
 
 .commentText {
@@ -68,10 +69,16 @@
     border: 1pt solid black;
 }
 
-.comment_item {
+
+/* .comment_item {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+} */
+
+.aon {
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes myfirst {

@@ -5,6 +5,7 @@ var showList = [];
 class Doomm {
     constructor(id, text, top, time, color) {
         this.top = top;
+        this.text = text;
         this.time = time;
         this.color = color;
         this.display = true;
@@ -19,6 +20,8 @@ class Doomm {
                 page.setData({
                     showList: showList
                 })
+                console.log(id);
+
             }, this.time * 1000) //定时器动画完成后执行。
     }
 }
@@ -35,6 +38,43 @@ function getRandomColor() {
 
 Page({
 
+    openDanmu() {
+        var ite_temp = this.data.ite;
+        // console.log(ite_temp);
+
+        ite_temp.forEach(e => {
+            var id = e.id;
+            doommList[id] = new Array();
+            e.comment.forEach(el => {
+                doommList[id].push(new Doomm(id, el.commentText, Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 10), getRandomColor()))
+            })
+
+        });
+        // console.log(doommList);
+
+        var t = 0;
+        //初始化，使得一开始就有3条
+        ite_temp.forEach(e => {
+            var id = e.id;
+            showList[id] = new Array();
+            doommList[id].forEach(el => {
+
+
+                showList[id].push(el);
+
+
+            })
+
+            doommList[id].splice(0, 3);
+            console.log(showList[id]);
+            console.log(doommList[id]);
+        })
+
+        this.setData({
+            showList: showList,
+            open: true
+        })
+    },
     /**
      * 页面的初始数据
      */
@@ -149,7 +189,7 @@ Page({
 
             }
         ],
-        open: false
+        open: true
     },
     lookForUserInfo() {
         wx.navigateTo({
@@ -165,42 +205,7 @@ Page({
             }
         })
     },
-    openDanmu() {
-        var ite_temp = this.data.ite;
-        for (var i in ite_temp) {
-            var comment_temp = ite_temp[i].comment;
-            var id = ite_temp[i].id;
-            for (var j in comment_temp) {
-                doommList[id] = new Array();
-                doommList[id].push(new Doomm(id, comment_temp[j].commentText, Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 10), getRandomColor()));
-            }
-            // console.log(doommList[ite_temp[i].id].length);
-        }
-        var t = 0;
-        //初始化，使得一开始就有3条
-        for (var i in ite_temp) {
-            var id = ite_temp[i].id;
-            showList[id] = new Array();
-            for (var j in doommList[id]) {
 
-                console.log(doommList[id][j]);
-
-                showList[id].push(doommList[id][j]);
-                t++;
-                if (t >= 3) {
-                    t = 0;
-                    break;
-                }
-            }
-            doommList[id].splice(0, 3);
-            console.log(showList[id]);
-
-        }
-        this.setData({
-            showList: showList,
-            open: true
-        })
-    },
     /**
      * 生命周期函数--监听页面加载
      */

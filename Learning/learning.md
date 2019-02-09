@@ -322,6 +322,50 @@ select_nav(e) {
 
 
 
+# js 数组，对象数组的用法
+
+
+
+js 
+
+```js
+var temp = [];
+temp['ads'] = new Array();
+temp['ads'].push('da');
+temp['ads'].push('ddd');
+temp['ads'].push([{ 'a': 'a', 'b': 'b' }, { 'c': 'c', 'd': 'd' }])
+temp['ads']['ads'] = 'aaaaaaaaaa';
+console.log(temp)
+
+
+temp['ads'].push('as');
+console.log(temp)
+temp['ads']['bbs'] = 'asdfaskldjf';
+console.log(temp)
+temp['ads'].push('asdfjksd');
+console.log(temp);
+
+
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190209151906385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzAzODYy,size_16,color_FFFFFF,t_70)
+
+补充：通过数字下标直接赋值与使用push直接赋值，其二者均为下标引用
+
+如：temp['ads'] [5] = 'sdafsad',属于下标引用，存储于数组的第一部分
+
+
+
+要使用数组的 `slice，splice`等方法，不能使用`temp=[] `创建数组，而是使用 `temp = new Array();`否则会报错,数组中包含对象，也可以使用数组的方法进行操作。//好像不是这样，待考究
+
+
+
+# 如何在内联样式里面写@keyframes这类的css
+
+> 若写不了，可以限制弹幕的长度
+
+
+
 # end
 
 [TOC]
