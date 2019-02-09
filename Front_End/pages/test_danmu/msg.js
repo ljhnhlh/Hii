@@ -1,7 +1,17 @@
 // templeate/msg.js
 var page = undefined;
-var doommList = [];
-var showList = [];
+var doommList = new Array();
+var showList = new Array();
+
+function newone(id, text, top, time, color) {
+
+    showList[id].push(new Doomm(id, text, top, time, color));
+    page.setData({
+        showList: showList,
+        doommList: doommList
+    })
+
+}
 class Doomm {
     constructor(id, text, top, time, color) {
         this.top = top;
@@ -11,16 +21,36 @@ class Doomm {
         this.display = true;
         let that = this;
         this.id = id;
-        setTimeout(function() {
+        this.left = -100;
+        setInterval(function() {
                 var id = that.id;
-                doommList[id].push(that);
-                showList[id].splice(showList[id].indexOf(that), 1); //动画完成，从列表中移除这项
-                showList.push(doommList[id].slice(0, 1));
-                doommList[id].shift();
+                if (showList[id] === undefined || showList[id].length == 0) {
+                    showList[id] = new Array();
+                }
+                if (doommList[id] === undefined || doommList[id].length == 0) {
+                    doommList[id] = new Array();
+                }
+                if (showList[id].indexOf(that) === -1) {
+                    doommList.splice(doommList[id].indexOf(that), 1);
+                    showList[id].push(that);
+                } else {
+                    showList[id].splice(showList[id].indexOf(that), 1); //动画完成，从列表中移除这项
+                    doommList[id].push(that);
+                }
+
                 page.setData({
-                    showList: showList
+                    showList: showList,
+                    doommList: doommList
                 })
                 console.log(id);
+                // var id = that.id;
+                // var index = showList[id].indexOf(that);
+                // showList[id][index].left = -100;
+                // page.setData({
+                //     showList: showList
+                // })
+                // console.log(id);
+
 
             }, this.time * 1000) //定时器动画完成后执行。
     }
@@ -46,7 +76,7 @@ Page({
             var id = e.id;
             doommList[id] = new Array();
             e.comment.forEach(el => {
-                doommList[id].push(new Doomm(id, el.commentText, Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 10), getRandomColor()))
+                doommList[id].push(new Doomm(id, el.commentText, Math.ceil(Math.random() * 100), 5 + el.commentText.length / 10, getRandomColor()))
             })
 
         });
@@ -58,16 +88,12 @@ Page({
             var id = e.id;
             showList[id] = new Array();
             doommList[id].forEach(el => {
-
-
                 showList[id].push(el);
-
-
             })
 
-            doommList[id].splice(0, 3);
-            console.log(showList[id]);
-            console.log(doommList[id]);
+            doommList[id].splice(0, 4);
+            // console.log(showList[id]);
+            // console.log(doommList[id]);
         })
 
         this.setData({
@@ -80,6 +106,7 @@ Page({
      */
     data: {
         showList: [],
+        doommList: [],
         ite: [{
                 'id': 0,
                 'content': ',mnxc,mdsfjjfdkdkjjdhf',

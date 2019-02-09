@@ -46,3 +46,4 @@ arr['abs']['ada'] = 'sadf'
 arr['abs']['ada'] = 'sadf'
 arr['abs'].push({ 'a': 'a', 'b': 'b' })
 console.log(arr['abs'].splice(0, 1));
+console.log(arr['abs'].indexOf('sadf'));

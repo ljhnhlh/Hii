@@ -9,7 +9,7 @@
     "pages/Message/Message",
     "pages/Infomation/infomation",
     "pages/competence/competence",
-    "pages/Message_detail/Message_detail"
+    "pages/Message_detail/Message_detail"                                          
   ],
   "window": {
     "backgroundTextStyle": "light",

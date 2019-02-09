@@ -20,10 +20,14 @@
             <image class="comment_open icon" src="/icons/temp.png" bind:tap="openDanmu"/>
             </view>
         <view wx:if="{{open}}" class="commentArea">
-            <block class="comment_item" wx:for="{{showList[item.id]}}" wx:for-item="it" wx:key="{{idex}}">
-            <text wx:if="{{it.display}}" class="aon" style="animation: myfirst {{it.time}}s linear forwards;top:{{it.top}}%;color:{{it.color}};">
-            {{it.text}}fsdadfsf
-
+            <block id = "{{item.id}}" class="comment_item" wx:for="{{showList[item.id]}}" wx:for-item="it" wx:key="{{idex}}">
+            <text wx:if="{{it.display}}" class="aon" style="animation: myfirst  {{it.time}}s linear forwards;left:{{it.left}}%;color:{{it.color}};">
+            {{it.text}}
+            </text>
+            </block>
+            <block id = "{{item.id}}" class="comment_item" wx:for="{{doommList[item.id]}}" wx:for-item="it" wx:key="{{idex}}">
+            <text wx:if="{{it.display}}" class="aon" style="animation: myfirst  {{it.time}}s linear forwards;color:{{it.color}};">
+            {{it.text}}
             </text>
             </block>
         </view>

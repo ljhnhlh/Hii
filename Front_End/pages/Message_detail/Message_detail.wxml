@@ -31,6 +31,7 @@
         <view class="plAndLt_pjBar ">
         <view class="pl {{pl?'active':''}}" bind:tap="pljiemian">评论</view>
         <view class="plAndLt_pj {{pl?'':'active'}}"bind:tap="ltjiemian">聊天</view>
+        <view class="plAndLt_pj {{pl?'':'active'}}"bind:tap="ltjiemian">申请</view>
         </view>
 
     </view>

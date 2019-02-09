@@ -51,6 +51,7 @@
 .commentArea {
     font-size: 10pt;
     border: 1px solid black;
+    overflow: hidden;
     height: 100pt;
 }
 
@@ -78,7 +79,6 @@
 
 .aon {
     position: relative;
-    z-index: 1;
 }
 
 @keyframes myfirst {
@@ -86,6 +86,6 @@
         left: 100%;
     }
     to {
-        left: -100%;
+        left: -200%;
     }
 }
