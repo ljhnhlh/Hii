@@ -362,6 +362,40 @@ console.log(temp);
 
 
 
+
+
+# 使用nginx配置本地网络测试环境
+
+测试了一下，发现，在勾选了"不校验域名合法性。。。"后，带有端口号的url也可以进行请求
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2019021200382432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzAzODYy,size_16,color_FFFFFF,t_70)
+
+所以没必要使用nginx。。。，但还是用了，详情请看：
+
+[手把手教你搭建Windows环境微信小程序的本地测试服务器](https://blog.csdn.net/myth13141314/article/details/81303034)
+
+
+
+
+
+# 小程序工具内勾选了"不校验域名合法性。。。"还报错
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190211235127963.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzAzODYy,size_16,color_FFFFFF,t_70)
+
+上图中，显示invalid url
+
+解决：
+
+在将url填写完整
+
+即：“http://www.test.com/login”
+
+对比web和小程序请求：
+
+web请求直接添加路由即可，不需要写完整的协议类型和域名，如HTTP，www.test.com等，前者是因为浏览器使用HTTP请求，如果是socket，在使用socket的时候浏览器也自动添加了协议类型，后者是也是由浏览器自动添加，而小程序请求需要手动填写完整的url
+
+
+
 # end
 
 [TOC]

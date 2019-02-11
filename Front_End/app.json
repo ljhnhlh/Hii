@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/test_danmu/msg",
     "template/msg",
     "pages/danmu/danmu",
@@ -7,7 +8,7 @@
     "pages/heart/heart",
     "pages/Me/Me",
     "pages/Message/Message",
-    "pages/Infomation/infomation",
+    "pages/infomation/infomation",
     "pages/competence/competence",
     "pages/Message_detail/Message_detail"                                          
   ],

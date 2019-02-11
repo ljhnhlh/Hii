@@ -8,7 +8,7 @@ function newone(id, text, top, time, color) {
     showList[id].push(new Doomm(id, text, top, time, color));
     page.setData({
         showList: showList,
-        doommList: doommList
+        // doommList: doommList
     })
 
 }
@@ -33,14 +33,14 @@ class Doomm {
                 if (showList[id].indexOf(that) === -1) {
                     doommList.splice(doommList[id].indexOf(that), 1);
                     showList[id].push(that);
-                } else {
+                } else if (doommList[id].indexOf(that) === -1) {
                     showList[id].splice(showList[id].indexOf(that), 1); //动画完成，从列表中移除这项
                     doommList[id].push(that);
                 }
 
                 page.setData({
                     showList: showList,
-                    doommList: doommList
+                    // doommList: doommList
                 })
                 console.log(id);
                 // var id = that.id;
@@ -84,20 +84,33 @@ Page({
 
         var t = 0;
         //初始化，使得一开始就有3条
-        ite_temp.forEach(e => {
-            var id = e.id;
-            showList[id] = new Array();
-            doommList[id].forEach(el => {
-                showList[id].push(el);
-            })
+        // ite_temp.forEach(e => {
+        //     var id = e.id;
+        //     showList[id] = new Array();
+        //     doommList[id].forEach(el => {
+        //         showList[id].push(el);
+        //     })
 
-            doommList[id].splice(0, 4);
-            // console.log(showList[id]);
-            // console.log(doommList[id]);
-        })
+        //     doommList[id].slice(0, 4);
+        //     // console.log(showList[id]);
+        //     // console.log(doommList[id]);
+        // })
+        var j;
+        for (let i = 0; i < ite_temp.length; i++) {
+            var id = ite_temp[i].id;
+            showList[id] = new Array();
+            for (j = 0; j < doommList[id].length; j++) {
+                if (j < 3)
+                    showList[id].push(doommList[id][j]);
+                else
+                    break;
+            }
+            doommList[id].splice(0, j);
+        }
 
         this.setData({
             showList: showList,
+            // doommList: doommList,
             open: true
         })
     },

@@ -1,0 +1,8 @@
+2019/02/11 22:39:42 [error] 11120#948: *3 CreateFile() "E:\Hii\nginx-1.14.2/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2019/02/11 22:48:20 [notice] 13340#5488: signal process started
+2019/02/11 22:58:25 [error] 11120#948: *12 CreateFile() "E:\Hii\nginx-1.14.2/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "www.test.com", referrer: "http://www.test.com/"
+2019/02/11 23:15:08 [notice] 14860#4224: signal process started
+2019/02/11 23:15:42 [notice] 10704#11424: signal process started
+2019/02/11 23:15:42 [error] 10704#11424: CreateFile() "E:\Hii\nginx-1.14.2/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2019/02/11 23:15:53 [notice] 9856#8896: signal process started
+2019/02/11 23:15:53 [error] 9856#8896: CreateFile() "E:\Hii\nginx-1.14.2/logs/nginx.pid" failed (2: The system cannot find the file specified)
