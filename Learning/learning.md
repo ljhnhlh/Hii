@@ -396,6 +396,94 @@ web请求直接添加路由即可，不需要写完整的协议类型和域名�
 
 
 
+# express 的app.use()作用和用法
+
+
+
+
+
+# 写微信小程序登陆模块时遇到invalid code问题
+
+说明：开发使用的是测试appid，个人有申请过一个appid，所以后端使用申请的appid
+
+问题：前端使用wx.login得到code，后端从微信服务器获取openid，但返回的结果是"invalid code"
+
+解决：前端获取的code是微信服务器给测试的appid分配的，而后端使用的是申请的appid，后端带着appid和code去申请openid时，微信服务器会找不到对应的code，所以返回 invalid code
+
+解决方法：使用申请到的appid创建项目即可
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190212211555113.png)
+
+总结：以上说明，小程序分发的code是与appid绑定的，仅当前申请code的appid才可使用
+
+代码:
+
+```js
+//前端 js
+
+wx.login({
+    success: function(res) {
+        if (res.code) {
+            console.log(res.code)
+            wx.request({
+                url: 'http://localhost:3000/login',
+                data: {
+                    code: res.code
+                },
+                success: function(res) {
+                    console.log(res.data);
+                },
+
+                fail: function() {
+                    console.log('login fail')
+                    wx.redirectTo({
+                        url: 'pages/login/login',
+                    })
+                }
+            })
+        }
+    }
+})
+```
+
+后端js：
+
+```js
+//后端js：
+//此处使用的request 是使用了 npm 的 request packet
+app.get('/login', function(req, res) {
+
+    console.log(req.query.code);
+    var code = req.query.code;
+    var url = 'https://api.weixin.qq.com/sns/jscode2session?' +
+        'appid=' + 'wx08dea5e778f278de&' +
+        'secret=' + '77fc034ff68fe7799e4e8723466a50d7&' +
+        'js_code=' + code +
+        '&grant_type=' + 'authorization_code';
+    console.log(url);
+
+    request({
+            url: url
+        },
+        function(err, response, body) {
+            if (!err) {
+                // console.log(body);
+                console.log(body);
+                res.end(body)
+            } else {
+                console.log(err);
+
+            }
+        })
+
+
+})
+```
+
+
+
+
+
 # end
 
 [TOC]
