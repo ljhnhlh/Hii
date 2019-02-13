@@ -482,6 +482,14 @@ app.get('/login', function(req, res) {
 
 
 
+# 数据库 表的大小与查询时间的关系
+
+
+
+# 使用redis作为内存的缓存
+
+http://www.runoob.com/redis/redis-install.html
+
 
 
 # end
