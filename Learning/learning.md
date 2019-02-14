@@ -492,6 +492,36 @@ http://www.runoob.com/redis/redis-install.html
 
 
 
+# wx.request设置header，使用node 获取header：
+
+wx.request直接添加header：{‘xxx’:'xxx'}即可设置header的值
+
+```
+wx.request({
+              url: 'https://URL',
+              data: {},
+              method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+               header: {'sessionId':'sessionId'}, // 设置请求的 header
+              success: function(res){
+                // success
+              },
+              fail: function() {
+                // fail
+              },
+              complete: function() {
+                // complete
+              }
+            })
+```
+
+node 后台使用`req.header('键值')`获取header内的某个值
+
+
+
+# 弹出式选择，写申请时选择个人能力标签
+
+https://blog.csdn.net/yingtian648/article/details/80004334
+
 # end
 
 [TOC]
