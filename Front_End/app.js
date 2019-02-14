@@ -1,6 +1,40 @@
 //app.js
 var url = 'http://localhost:3000'
 var app = getApp();
+
+function getcode() {
+    return new Promise(function(reslove, reject) {
+        wx.login({
+            success: function(res) {
+                resolve(res.code)
+            },
+            fail: function() {
+                reject(err)
+            }
+
+        })
+    })
+}
+
+function request_server(pathName, data_collect, sessionId) {
+    return new Promise(function(resolve, reject) {
+        wx.request({
+            url: url + pathName,
+            data: { data_collect: data_collect },
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: { sessionId: sessionId }, // 设置请求的 header
+            success: function(res) {
+                resolve(res)
+            },
+            fail: function() {
+                // fail
+            },
+            complete: function() {
+                // complete
+            }
+        })
+    })
+}
 App({
     onLaunch: function() {
         var sessionId = wx.getStorageSync('sessionId')
