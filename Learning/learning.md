@@ -522,7 +522,49 @@ node 后台使用`req.header('键值')`获取header内的某个值
 
 https://blog.csdn.net/yingtian648/article/details/80004334
 
+
+
+
+
+# 连接池
+
+暂时理解：有一个线程池，每次要进行数据库操作时，都向这个线程池要一个线程进行查询，查询完毕后就把这个线程还回去
+
+用法：
+
+
+
+
+
+# redis 的学习
+
+基本用法：
+
+```js
+var redis = require('redis')
+client = redis.createClient();
+
+client.on('error', function(err) {
+    console.log('error ' + err);
+
+});
+client.hset("hash key", "hashtest 1", "some value", redis.print);
+client.hset(["hash key", "hashtest 2", "some other value"], function(err) {
+    client.end(true)
+});
+```
+
+在开始需要使用 `client.on('error',fun...)` 来处理连接的错误，
+
+`client.end(true)` 用于关闭连接，若不关闭，则服务器会一直运行，不过end需要放在回调函数中，否则会出现如下情况：因为有些语句没执行完成就关闭了连接
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190215215255554.png)
+
+
+
 # end
+
+
 
 [TOC]
 

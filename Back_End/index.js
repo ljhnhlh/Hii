@@ -37,6 +37,10 @@ app.get('/', function(req, res) {
     res.end('Hello world')
 })
 app.get('/HaveRegisted', function(req, res) {
+    var ssIdORRegister = {
+        ss: false,
+        sessionId: ''
+    };
     var code = req.query.code;
     var url = 'https://api.weixin.qq.com/sns/jscode2session?' +
         'appid=' + 'wx08dea5e778f278de&' +
@@ -57,8 +61,10 @@ app.get('/HaveRegisted', function(req, res) {
                     if (!err) {
                         if (rows[0] === undefined) {
                             //不存在，需要注册
+                            ssIdORRegister.ss = false;
                         } else {
                             //生成sessionId
+
                         }
                     }
                 })
