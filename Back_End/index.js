@@ -1,5 +1,7 @@
 var app = require('express')();
+const uuidv1 = require('uuid/v1');
 var request = require('request')
+var redis = require('redis')
 var bodyParser = require('body-parser');
 var mysql = require('mysql')
 var connection = mysql.createConnection({
@@ -9,8 +11,15 @@ var connection = mysql.createConnection({
     database: 'user'
 });
 connection.connect();
+client = redis.createClient();
+
+client.on('error', function(err) {
+    console.log('error ' + err);
+
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 function getOpenId(code) {
     var url = 'https://api.weixin.qq.com/sns/jscode2session?' +
@@ -37,9 +46,11 @@ app.get('/', function(req, res) {
     res.end('Hello world')
 })
 app.get('/HaveRegisted', function(req, res) {
+
     var ssIdORRegister = {
         ss: false,
-        sessionId: ''
+        sessionId: '',
+        expiredTime: 30
     };
     var code = req.query.code;
     var url = 'https://api.weixin.qq.com/sns/jscode2session?' +
@@ -62,9 +73,14 @@ app.get('/HaveRegisted', function(req, res) {
                         if (rows[0] === undefined) {
                             //不存在，需要注册
                             ssIdORRegister.ss = false;
+                            res.end(JSON.stringify(ssIdORRegister))
                         } else {
                             //生成sessionId
-
+                            var sessionId = uuidv1();
+                            client.hset(sessionId, body.openid + ',' + body.session_key, 'dsd', redis.print);
+                            ssIdORRegister.ss = true;
+                            ssIdORRegister.sessionId = sessionId;
+                            res.end(JSON.stringify(ssIdORRegister))
                         }
                     }
                 })
@@ -76,11 +92,10 @@ app.get('/HaveRegisted', function(req, res) {
         })
 })
 app.get('/login', function(req, res) {
-    console.log('ggoood');
-    console.log();
 
-    console.log(req.query.code);
-    console.log(req.header('sessionId'));
+
+    // console.log(req.query.code);
+    // console.log(req.header('sessionId'));
 
     // var q1 = new getOpenId(res.query.code);
     // q1.then(function(data) {
@@ -100,40 +115,21 @@ app.get('/login', function(req, res) {
             url: url
         },
         function(err, response, body) {
+            var getSession = {
+                success: false,
+                sessionId: '',
+                expiredTime: 30
+            }
             if (!err) {
                 // console.log(body);
-                console.log(body);
-                res.end(body)
-            } else {
-                console.log(err);
 
+                var sessionId = uuidv1();
+                client.hset(sessionId, body.openid + ',' + body.session_key, 'dsd', redis.print)
+                getSession.sessionId = sessionId;
+                getSession.success = true
             }
+            res.end(JSON.stringify(getSession))
         })
-
-
-
-    // request.get({
-    //         url: 'https://api.weixin.qq.com/sns/jscode2session',
-    //         json: true,
-    //         qs: {
-    //             appid: 'wx08dea5e778f278de',
-    //             secret: '77fc034ff68fe7799e4e8723466a50d7',
-    //             js_code: code,
-    //             grant_type: 'authorization_code'
-    //         }
-    //     },
-    //     function(err, response, body) {
-    //         if (!err) {
-    //             // console.log(body);
-    //             console.log(body);
-    //             res.end(body)
-    //         } else {
-    //             console.log(err);
-
-    //         }
-    //     })
-
-    // res.end('afasf')
 })
 app.listen(3000);
 console.log('listen on 3000');

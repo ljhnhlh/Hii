@@ -39,6 +39,7 @@ App({
     onLaunch: function() {
         var sessionId = wx.getStorageSync('sessionId')
         var expiredTime = wx.getStorageSync('expiredTime')
+        console.log(sessionId + ',' + expiredTime + 'sads')
         if (!sessionId || !expiredTime) {
             //无sessionId
             //查找是否注册
@@ -74,6 +75,7 @@ App({
             //有sessionId
             //先判断是否超时
             var now = new Date();
+            console.log(sessionId + "xxxxxxx")
             if (now - expiredTime >= 1 * 24 * 60 * 60 * 1000) {
                 //sessionId 超时：获取新的sessionId并写入缓存
                 wx.login({
@@ -84,9 +86,17 @@ App({
                             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                             // header: {}, // 设置请求的 header
                             success: function(response) {
-                                this.globalData.sessionId = response.sessionId;
-                                wx.setStorageSync('sessionId', response.sessionId)
-                                wx.setStorageSync('expiredTime', response.expiredTime)
+                                response = JSON.parse(response);
+                                console.log(response)
+                                if (response.success) {
+                                    this.globalData.sessionId = response.sessionId;
+                                    wx.setStorageSync('sessionId', response.sessionId)
+                                    wx.setStorageSync('expiredTime', response.expiredTime)
+                                    wx.redirectTo({
+                                        url: 'pages/discover/discover',
+                                    })
+                                }
+
                             },
                             fail: function() {
                                 //获取sessionId失败
