@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '123456',
-    database: 'user'
+    database: 'Hii'
 });
 connection.connect();
 client = redis.createClient();
@@ -66,15 +66,22 @@ app.get('/HaveRegisted', function(req, res) {
                 // console.log(body);
                 console.log(body);
                 //获取appid，判断是否已注册，数据库查询
+                body = JSON.parse(body);
                 var openid = body.openid;
+                console.log(openid);
+
                 var str = 'select 1 from user where openid = ? limit 1;'
-                connection.query(str, { openid: openid }, function(err, rows, fields) {
+                connection.query(str, { 'openid': openid }, function(err, rows, fields) {
                     if (!err) {
                         if (rows[0] === undefined) {
                             //不存在，需要注册
+                            console.log("register");
+
                             ssIdORRegister.ss = false;
                             res.end(JSON.stringify(ssIdORRegister))
                         } else {
+                            console.log('not need to registe');
+
                             //生成sessionId
                             var sessionId = uuidv1();
                             client.hset(sessionId, body.openid + ',' + body.session_key, 'dsd', redis.print);
@@ -82,10 +89,13 @@ app.get('/HaveRegisted', function(req, res) {
                             ssIdORRegister.sessionId = sessionId;
                             res.end(JSON.stringify(ssIdORRegister))
                         }
+                    } else {
+                        console.log(err);
+
                     }
                 })
 
-                res.end(body)
+                // res.end(body)
             } else {
                 console.log(err);
             }

@@ -95,6 +95,12 @@ App({
                                     wx.redirectTo({
                                         url: 'pages/discover/discover',
                                     })
+                                } else {
+                                    console.log('redirect to register');
+
+                                    wx.redirectTo({
+                                        url: 'pages/register/register',
+                                    })
                                 }
 
                             },

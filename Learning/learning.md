@@ -562,6 +562,16 @@ client.hset(["hash key", "hashtest 2", "some other value"], function(err) {
 
 
 
+[redis，包含了expire，数组，要看](https://github.com/NodeRedis/node_redis )
+
+[同上](https://www.cnblogs.com/little-ab/articles/6914339.html)
+
+
+
+# 对象与数据的区别/理解
+
+一直以来将var a = {'a':'a','b':'b'}
+
 # end
 
 

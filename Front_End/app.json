@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/register/register",
     "pages/login/login",
     "pages/test_danmu/msg",
     "template/msg",
