@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/discover/discover",
     "pages/register/register",
     "pages/login/login",
     "pages/test_danmu/msg",
     "template/msg",
     "pages/danmu/danmu",
-    "pages/discover/discover",
+   
     "pages/heart/heart",
     "pages/Me/Me",
     "pages/Message/Message",

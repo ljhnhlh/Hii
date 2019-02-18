@@ -2,7 +2,12 @@
 <open-data type="userAvatarUrl"></open-data>
 <open-data type="userNickName"></open-data>
 
-<view>学校<input style="width='80%'">请输入学校</input></view>
+
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      所在学校：{{array[index]}}
+    </view>
+  </picker>
 
 <!-- 需要使用 button 来授权登录 -->
 <button

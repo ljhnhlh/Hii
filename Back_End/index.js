@@ -31,6 +31,7 @@ function getOpenId(code) {
         function(resolve, reject) {
             request({ url: url }, function(err, response, body) {
                 if (!err) {
+                    console.log(body);
                     resolve(body)
                 } else {
                     reject(err)
@@ -68,10 +69,10 @@ app.get('/HaveRegisted', function(req, res) {
                 //获取appid，判断是否已注册，数据库查询
                 body = JSON.parse(body);
                 var openid = body.openid;
-                console.log(openid);
+                console.log(openid + "xxxxx");
 
                 var str = 'select 1 from user where openid = ? limit 1;'
-                connection.query(str, { 'openid': openid }, function(err, rows, fields) {
+                connection.query(str, openid, function(err, rows, fields) {
                     if (!err) {
                         if (rows[0] === undefined) {
                             //不存在，需要注册
@@ -141,5 +142,78 @@ app.get('/login', function(req, res) {
             res.end(JSON.stringify(getSession))
         })
 })
+
+function addUserInfo(data, userInfo) {
+    return new Promise(function(resolve, reject) {
+        var str = 'insert into user set ?';
+        console.log(data.openid);
+
+        connection.query(str, {
+            openid: data.openid,
+            nikname: userInfo.nickName,
+            avatarUrl: userInfo.avatarUrl,
+            gender: userInfo.gender,
+            school: userInfo.school,
+            wechat: null,
+            alipay: null
+        }, function(err, rows, filed) {
+            if (err) {
+                reject(err)
+                    // console.log(err);
+            } else {
+                console.log('success');
+                resolve(data)
+            }
+
+        })
+    })
+}
+app.post('/register', function(req, res) {
+    /**
+     * req.body :{
+                code: wx.login返回的code,
+                school: 用户的学校,
+                gender: 用户的性别，1为男，0为女,
+                nickName: 用户昵称，
+                avatarUrl: 用户头像地址
+            }
+     * 
+     * 
+     */
+    var ss = {
+            success: false,
+            sessionId: '',
+            expiredTime: 30
+        }
+        //使用code 获取openId
+
+    var getIdAndsessionKey = getOpenId(req.body.code);
+    //获取到信息了，调用addUserInfo,使用mysql存入用户信息
+    getIdAndsessionKey.then(function(data) {
+        data = JSON.parse(data);
+        console.log(data.openid);
+
+        addUserInfo(data, req.body).then(function(sqlData) {
+
+            console.log(sqlData);
+
+            //获取sessionId
+            var sessionId = uuidv1();
+            //redis 存储sessionId
+            client.hset(sessionId, sqlData.openid + "," + sqlData.session_key, 'dsd', redis.print)
+                //返回sessionId
+            ss.sessionId = sessionId;
+            ss.success = true;
+            console.log('success');
+
+            res.end(JSON.stringify(ss));
+
+        })
+    }).catch(function(err) {
+        // console.log(err);
+        res.end(ss);
+    })
+})
+
 app.listen(3000);
 console.log('listen on 3000');

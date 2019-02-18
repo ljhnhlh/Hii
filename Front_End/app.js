@@ -37,9 +37,12 @@ function request_server(pathName, data_collect, sessionId) {
 }
 App({
     onLaunch: function() {
+
         var sessionId = wx.getStorageSync('sessionId')
         var expiredTime = wx.getStorageSync('expiredTime')
+        var time = wx.getStorageSync('time')
         console.log(sessionId + ',' + expiredTime + 'sads')
+        var that = this;
         if (!sessionId || !expiredTime) {
             //无sessionId
             //查找是否注册
@@ -50,15 +53,26 @@ App({
                         data: { code: res.code },
                         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                         // header: {}, // 设置请求的 header
-                        success: function(res) {
+                        success: function(response) {
 
+                            var data = response.data;
+                            if (!data.ss) {
+                                wx.redirectTo({
+                                    url: '/pages/register/register',
+                                    success: function() {
+                                        console.log('success');
+                                    }
+                                })
+                            } else {
+                                //设置sessionId,
+
+                                wx.setStorageSync('sessionId', data.sessionId)
+                                wx.setStorageSync('expiredTime', data.expiredTime)
+                                that.globalData.sessionId = data.sessionId;
+                                that.globalData.expiredTime = data.expiredTime;
+                            }
                         },
-                        fail: function() {
-                            // fail
-                        },
-                        complete: function() {
-                            // complete
-                        }
+
                     })
                 },
                 fail: function() {
@@ -76,7 +90,7 @@ App({
             //先判断是否超时
             var now = new Date();
             console.log(sessionId + "xxxxxxx")
-            if (now - expiredTime >= 1 * 24 * 60 * 60 * 1000) {
+            if (now - time >= expiredTime * 60 * 1000) {
                 //sessionId 超时：获取新的sessionId并写入缓存
                 wx.login({
                     success: function(res) {
@@ -86,20 +100,22 @@ App({
                             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
                             // header: {}, // 设置请求的 header
                             success: function(response) {
-                                response = JSON.parse(response);
+                                // response = JSON.parse(response);
                                 console.log(response)
-                                if (response.success) {
-                                    this.globalData.sessionId = response.sessionId;
-                                    wx.setStorageSync('sessionId', response.sessionId)
-                                    wx.setStorageSync('expiredTime', response.expiredTime)
+                                if (response.data.success) {
+                                    that.globalData.sessionId = response.data.sessionId;
+                                    var time = new Date();
+                                    wx.setStorageSync('sessionId', response.data.sessionId)
+                                    wx.setStorageSync('time', time);
+                                    wx.setStorageSync('expiredTime', response.data.expiredTime)
                                     wx.redirectTo({
-                                        url: 'pages/discover/discover',
+                                        url: '/pages/discover/discover',
                                     })
                                 } else {
                                     console.log('redirect to register');
 
                                     wx.redirectTo({
-                                        url: 'pages/register/register',
+                                        url: '/pages/register/register',
                                     })
                                 }
 
@@ -127,7 +143,9 @@ App({
             } else {
                 //正常使用
                 //每次正常使用的时候，请求超过5次就增加sessionId的使用时长半小时
-                this.globalData.sessionId = sessionId;
+                // console.log('good');
+
+                that.globalData.sessionId = sessionId;
             }
         }
 
@@ -169,6 +187,7 @@ App({
         })
     },
     globalData: {
-        sessionId: null
+        sessionId: null,
+        userInfo: null
     }
 })
