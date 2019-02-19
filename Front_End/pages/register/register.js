@@ -52,7 +52,7 @@ Page({
      */
     bindPickerChange: function(e) {
         var value = e.detail.value;
-        
+
         console.log(this.data.array[value]);
         console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
@@ -67,33 +67,52 @@ Page({
         var that = this;
         console.log(e.detail.userInfo)
         login1.then(function(loginData) {
-          console.log(loginData)
+            console.log(loginData)
             var userInfo = {
-              code: loginData,
+                code: loginData,
                 school: that.data.array[that.data.index],
-              gender: e.detail.userInfo.gender,
-              nickName: e.detail.userInfo.nickName,
-              avatarUrl: e.detail.userInfo.avatarUrl
+                gender: e.detail.userInfo.gender,
+                nickName: e.detail.userInfo.nickName,
+                avatarUrl: e.detail.userInfo.avatarUrl
             }
             var wxrq = wx_post_request('/register', userInfo);
             wxrq.then(function(rqdata) {
                 //存储sessionId 和expireTime
-                rqdata = JSON.parse(rqdata);
+                // rqdata = JSON.parse(rqdata);
+                console.log(rqdata);
+                rqdata = rqdata.data;
+                console.log(rqdata.success);
+                console.log(rqdata);
+
                 if (rqdata.success) {
                     wx.setStorageSync('sessionId', rqdata.sessionId);
                     wx.setStorageSync('expireTime', rqdata.expireTime);
                     app.globalData.sessionId = rqdata.sessionId;
                     app.globalData.userInfo = e.detail.userInfo;
-                    wx.redirectTo({
+
+                    wx.switchTab({
                         url: '/pages/discover/discover',
-                        fail: function() {
-                            wx.showToast({
-                                title: '加载失败',
+                        success: function(res) {
+                            // success
+                            console.log('success');
+                            wx.showToast({ // 显示Toast
+                                title: '注册成功',
                                 icon: 'none',
                                 duration: 1500
                             })
+                        },
+                        fail: function(err) {
+                            wx.showToast({ // 显示Toast
+                                title: '注册失败',
+                                icon: 'none',
+                                duration: 1500
+                            })
+
                         }
                     })
+
+
+
                 }
             })
         })

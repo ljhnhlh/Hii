@@ -37,10 +37,14 @@ function request_server(pathName, data_collect, sessionId) {
 }
 App({
     onLaunch: function() {
-
+        wx.clearStorageSync('sessionId')
+        wx.clearStorageSync('expiredTime')
+        wx.clearStorageSync('time')
         var sessionId = wx.getStorageSync('sessionId')
         var expiredTime = wx.getStorageSync('expiredTime')
         var time = wx.getStorageSync('time')
+        console.log(sessionId + " ," + expiredTime + " ," + time);
+
         console.log(sessionId + ',' + expiredTime + 'sads')
         var that = this;
         if (!sessionId || !expiredTime) {
@@ -90,7 +94,7 @@ App({
             //先判断是否超时
             var now = new Date();
             console.log(sessionId + "xxxxxxx")
-            if (now - time >= expiredTime * 60 * 1000) {
+            if (now - time >= 1) {
                 //sessionId 超时：获取新的sessionId并写入缓存
                 wx.login({
                     success: function(res) {

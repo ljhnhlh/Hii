@@ -566,11 +566,55 @@ client.hset(["hash key", "hashtest 2", "some other value"], function(err) {
 
 [同上](https://www.cnblogs.com/little-ab/articles/6914339.html)
 
+# 小程序页面跳转
+
+小程序，非tabar页面不能使用`wx.redirectTo` 跳转到tabar页面，而应该使用`wx.switchTab`
+
+# 模块的使用
+
+```js
+//测试modual是跟其它代码一样顺序执行还是函数调用一样异步执行
+function log1() {
+    var i = 0;
+    while (i < 100000) {
+        i++
+    }
+    console.log(1);
+}
+function log3() {
+    var i = 0;
+    while (i < 100000) {
+        i++
+    }
+    console.log(3);
+}
+module.exports = {
+    log1: log1,
+    log3: log3
+}
+```
+
+引用：require要写成路径的形式，不能只写成文件名，因为若无文件名，运行时，程序会查找全局模块和基本模块而不会查找自定义模块，因此会报错
+
+```js
+var modu = require('./modualTest.js')
+
+modu.log1();
+modu.log3()
+console.log(2);
+```
+
+运行结果如下: 可知自定义模块在代码中是顺序执行的，而不是异步调用(根据平时使用的mysql等模块也可知，若非使用回调函数，都是顺序执行的)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190219180523964.png)
 
 
-# 对象与数据的区别/理解
 
-一直以来将var a = {'a':'a','b':'b'}
+# node.js 文档
+
+http://nodejs.cn/api/
+
+
 
 # end
 

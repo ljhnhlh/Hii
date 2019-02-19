@@ -1,0 +1,12 @@
+<view >是否筛选：<switch  /></view> 
+<view >内容：
+    <input value='   input' />
+</view>
+<view >报答：
+<input value='    input' />
+</view>
+<view >图片：
+<image wx:for="{{imageItem}}" style = "display:flex;justify-content:row" src="{{item}}"/>
+<button bindtap='chooseImage'>选择图片</button>
+</view>
+<button bindtap='tijiao' >提交</button>
