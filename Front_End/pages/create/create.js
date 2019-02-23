@@ -64,8 +64,6 @@ Page({
         var p = chooseImgPromise(that);
     },
     tijiao() {
-
-
         uplfile('/ULFile', this.data.imageItem[0]);
     },
     /**

@@ -614,7 +614,11 @@ console.log(2);
 
 http://nodejs.cn/api/
 
+# 获取post 请求上传的图片
 
+post 请求的图片服务端接收后存在内存中，使用formidable.pares可以达到其暂存路径：path，不过通过对file的属性设置也可以将数据写入特定位置，明天试试
+
+https://segmentfault.com/a/1190000005706031
 
 # end
 
