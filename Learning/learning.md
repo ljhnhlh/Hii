@@ -620,6 +620,12 @@ post 请求的图片服务端接收后存在内存中，使用formidable.pares�
 
 https://segmentfault.com/a/1190000005706031
 
+
+
+# node - github - 腾讯工程师
+
+https://github.com/chyingp
+
 # end
 
 
