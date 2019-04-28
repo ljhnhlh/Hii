@@ -626,6 +626,37 @@ https://segmentfault.com/a/1190000005706031
 
 https://github.com/chyingp
 
+
+
+# 不同page之间传递值
+
+使用url来传值：
+
+```js
+wx.navigateTo({
+  url: 'test?id=1'
+})
+```
+
+在另一个页面的onload函数中获取值：
+
+```js
+onLoad:function(options){
+//  var that=this
+  id = options.id
+//  that.setData({
+//  imgUrl:options.imgUrl,
+//  title:options.title,
+//  videoSrc:options.videoSrc,
+//  group_id:options["group_id"]
+// })
+}
+```
+
+
+
+
+
 # end
 
 
